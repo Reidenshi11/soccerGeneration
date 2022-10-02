@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Generation</title>
+
+    <link rel="stylesheet" href="index.css">
+
+    <script defer src="script.js"></script>
+
+</head>
+<body>
+    <header>
+        <div class="header__container">
+            <h2>Футбольный генератор</h2>
+        </div>
+    </header>
+
+    <main>
+        <div class="main__container">
+            <div class="main__buttons">
+
+                <button class="m__button" id="btnGen">Генерация</button>
+                <button class="m__button" id="btnGameTour">Сыграть тур</button>
+                <button class="m__button" id="btnRename">Изменить команды</button>
+                <button type="submit" id="btnRenameOk">Ok</button>
+
+            </div>
+    
+            <div class="main__tables">
+
+                <div class="table__teams">
+
+                    <table class="table__teams_table">
+                        <thead class="table__teams_thead">
+                            <tr class="table__teams_tr">
+                                <td class="table__teams_td" id="">№</td>
+                                <td class="table__teams_td">Команда</td>
+                                <td class="table__teams_td">Игр</td>
+                                <td class="table__teams_td">В</td>
+                                <td class="table__teams_td">Н</td>
+                                <td class="table__teams_td">П</td>
+                                <td class="table__teams_td">Заб.</td>
+                                <td class="table__teams_td">Пр.</td>
+                                <td class="table__teams_td">Очки</td>
+                            </tr>
+                        </thead>
+
+                        <tbody class="table__teams_tbody">
+                            <tr class="table__teams_tr">
+                                <td class="table__teams_td" id="">1</td>
+                                <td class="team__name table__teams_td" id="teamOne">FC Sassaki
+                                    <input class="hidden input__nameTeam" type="text" name="" id="inputTeamOne">
+                                </td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                            </tr>
+    
+                            <tr class="table__teams_tr">
+                                <td class="table__teams_td" id="">2</td>
+                                <td class="team__name table__teams_td" id="teamTwo">FC Gordon
+                                    <input class="hidden input__nameTeam" type="text" name="" id="inputTeamTwo">
+                                </td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                            </tr>
+    
+                            <tr class="table__teams_tr">
+                                <td class="table__teams_td" id="">3</td>
+                                <td class="team__name table__teams_td" id="teamThree">FC Bicks
+                                    <input class="hidden input__nameTeam" type="text" name="" id="inputTeamThree">
+                                </td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                            </tr>
+    
+                            <tr class="table__teams_tr">
+                                <td class="table__teams_td" id="">4</td>
+                                <td class="team__name table__teams_td" id="teamFour">FC Pussys
+                                    <input class="hidden input__nameTeam" type="text" name="" id="inputTeamFour">
+                                </td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                                <td class="table__teams_td">0</td>
+                            </tr>
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+                <div class="table__goaleadors">
+                    <table class="table__goal_table">
+
+                        <thead class="table__goal_thead">
+                            <tr class="table__goal_tr">
+                                <td class="table__goal_td" id="">№</td>
+                                <td class="table__goal_td">Игрок</td>
+                                <td class="table__goal_td">Игр</td>
+                                <td class="table__goal_td">Забито</td>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            <tr class="table__goal_tr">
+                                <td class="table__goal_td" id="">1</td>
+                                <td class="table__goal_td">Player1</td>
+                                <td class="table__goal_td">0</td>
+                                <td class="table__goal_td">0</td>
+                            </tr>
+                            <tr class="table__goal_tr">
+                                <td class="table__goal_td" id="">2</td>
+                                <td class="table__goal_td">Player2</td>
+                                <td class="table__goal_td">0</td>
+                                <td class="table__goal_td">0</td>
+                            </tr>
+                            <tr class="table__goal_tr">
+                                <td class="table__goal_td" id="">3</td>
+                                <td class="table__goal_td">Player3</td>
+                                <td class="table__goal_td">0</td>
+                                <td class="table__goal_td">0</td>
+                            </tr>
+                            <tr class="table__goal_tr">
+                                <td class="table__goal_td" id="">4</td>
+                                <td class="table__goal_td">Player4</td>
+                                <td class="table__goal_td">0</td>
+                                <td class="table__goal_td">0</td>
+                            </tr>
+                            <tr class="table__goal_tr">
+                                <td class="table__goal_td" id="">5</td>
+                                <td class="table__goal_td">Player5</td>
+                                <td class="table__goal_td">0</td>
+                                <td class="table__goal_td">0</td>
+                            </tr>
+                            <tr class="table__goal_tr">
+                                <td class="table__goal_td" id="">6</td>
+                                <td class="table__goal_td">Player6</td>
+                                <td class="table__goal_td">0</td>
+                                <td class="table__goal_td">0</td>
+                            </tr>
+                            <tr class="table__goal_tr">
+                                <td class="table__goal_td" id="">7</td>
+                                <td class="table__goal_td">Player7</td>
+                                <td class="table__goal_td">0</td>
+                                <td class="table__goal_td">0</td>
+                            </tr>
+                            <tr class="table__goal_tr">
+                                <td class="table__goal_td" id="">8</td>
+                                <td class="table__goal_td">Player8</td>
+                                <td class="table__goal_td">0</td>
+                                <td class="table__goal_td">0</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="main__calendar">
+                <div class="main__calendar_header">Календарь</div> 
+                    <div class="calendar_tour" id="clndArea"> 
+                        <div class="calendar_tour_header">Тур №Test</div>
+                            <table class="calendar_tour_container">
+                                <tr class="calendar_tour_tr">
+                                    <td class="calendar_tour_td">Team1</td>
+                                    <td class="calendar_tour_td">0</td>
+                                    <td class="calendar_tour_td">:</td>
+                                    <td class="calendar_tour_td">0</td>
+                                    <td class="calendar_tour_td">Team2</td>
+                                </tr>
+                                <tr class="calendar_tour_tr">
+                                    <td class="calendar_tour_td">Team3</td>
+                                    <td class="calendar_tour_td">0</td>
+                                    <td class="calendar_tour_td">:</td>
+                                    <td class="calendar_tour_td">0</td>
+                                    <td class="calendar_tour_td">Team4</td>
+                                </tr>
+                            </table>
+                    </div>
+            </div>
+
+            <div class="main__result"></div>
+
+        </div>
+        <hr>
+
+        <div class="test"></div>
+
+    </main>
+
+    <footer>
+
+    </footer>
+    
+
+
+    
+</body>
+</html>
