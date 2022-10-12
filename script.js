@@ -1,21 +1,23 @@
 let arrTeam = [
-    {name: "FC Sassaki",
-    city: "Moscow",
+    {name: "Team Z",
     players: [],
     },
-    {name: "FC Gordon",
-    city: "Voronesh",
+    {name: "Team V",
     players: [],
     },
-    {name: "FC Bicks",
-    city: "Voronesh",
+    {name: "Team Y",
     players: [],
     },
-    {name: "FC Pussys",
-    city: "Voronesh",
+    {name: "Team X",
     players: [],
     }
 ];
+
+
+teamOne.textContent = `${arrTeam[0].name}`;
+teamTwo.textContent = `${arrTeam[1].name}`;
+teamThree.textContent = `${arrTeam[2].name}`;
+teamFour.textContent = `${arrTeam[3].name}`;
 
 let arrPlayers = [
     {name: "Samuel Clarke",
@@ -86,6 +88,8 @@ let team = [
     arrTeam[2],
     arrTeam[3]
 ]
+
+console.log('arrTeam[0]: ', arrTeam[0].name);
 
 let currentTour = 1;
 
@@ -160,40 +164,210 @@ let randomPlayer = function(teams, players) {
 
 }
 
+function playTour() {
+    function generationResult(team) {
+        if(currentTour <= ((+(team.length) * 2) - 2)){
+            let goalTeam1 = mathRandom(0, 5);
+            let goalTeam2 = mathRandom(0, 5);
+            let goalTeam3 = mathRandom(0, 5);
+            let goalTeam4 = mathRandom(0, 5);
+    
+            let result = [
+                {name: team[0].name, goal: goalTeam1},
+                {name: team[1].name, goal: goalTeam2},
+                {name: team[2].name, goal: goalTeam3},
+                {name: team[3].name, goal: goalTeam4}
+        ];
+            
+    
+            tourToScreen(team[0],team[1],team[2],team[3],goalTeam1,goalTeam2,goalTeam3,goalTeam4);
 
-
-btnGameTour.addEventListener('click', function() {
-    if(currentTour <= ((+(team.length) * 2) - 2)){
-        clndArea.insertAdjacentHTML('beforeend', `   
-        <div class="calendar_tour"> 
-                <div class="calendar_tour_header">Тур №${currentTour}</div>
-                    <table class="calendar_tour_container">
-                        <tr class="calendar_tour_tr">
-                            <td class="calendar_tour_td">Team3</td>
-                            <td class="calendar_tour_td">${mathRandom(0, 5)}</td>
-                            <td class="calendar_tour_td">:</td>
-                            <td class="calendar_tour_td">${mathRandom(0, 5)}</td>
-                            <td class="calendar_tour_td">Team2</td>
-                        </tr>
-                        <tr class="calendar_tour_tr">
-                            <td class="calendar_tour_td">Team1</td>
-                            <td class="calendar_tour_td">${mathRandom(0, 5)}</td>
-                            <td class="calendar_tour_td">:</td>
-                            <td class="calendar_tour_td">${mathRandom(0, 5)}</td>
-                            <td class="calendar_tour_td">Team4</td>
-                        </tr>
-                    </table>
-            </div>
-    `);
-        currentTour++;
+            currentTour++;
+        } else {
+            clndArea.insertAdjacentHTML('beforeend', `   
+            <h3>Все туры сыграны</h3>
+        `);
+        }
     }
-})
+
+    generationResult(team);
+
+}
+
+function winOrLose(goalTeam1, goalTeam2, team) {
+    let classTeam1 = goalTeam1; 
+    let classTeam2 = goalTeam2; 
+    
+    ////team //// 1 or 2
+
+    if(goalTeam1 > goalTeam2) {
+        classTeam1 = 'win';
+        classTeam2 = 'lose';
+        if (team == 1) {
+            return classTeam1;
+        } else if (team == 2) {
+            return classTeam2;
+        } else {
+            console.log('winOrLose: error_1')
+        }
+    } else if(goalTeam1 < goalTeam2) {
+        classTeam1 = 'lose';
+        classTeam2 = 'win';
+        if (team == 1) {
+            return classTeam1;
+        } else if (team == 2) {
+            return classTeam2;
+        } else {
+            console.log('winOrLose: error_2')
+        }
+    } else {
+        classTeam1 = 'draw';
+        classTeam2 = 'draw';
+        if (team == 1) {
+            return classTeam1;
+        } else if (team == 2) {
+            return classTeam2;
+        } else {
+            console.log('winOrLose: error_3')
+        }
+    }
+};
+
+
+function tourToScreen(team1, team2, team3, team4, resT1, resT2, resT3, resT4) {
+
+    
+    // clndArea.insertAdjacentHTML('beforeend', `   
+    //     <div class="calendar_tour"> 
+    //             <div class="calendar_tour_header">Тур №${currentTour}</div>
+    //                 <table class="calendar_tour_container">
+    //                     <tr class="calendar_tour_tr">
+    //                         <td class="${winOrLose(resT1, resT2, 1)}" class="calendar_tour_td">${team1}</td>
+    //                         <td class="calendar_tour_td">${resT1}</td>
+    //                         <td class="calendar_tour_td">:</td>
+    //                         <td class="calendar_tour_td">${resT2}</td>
+    //                         <td class="${winOrLose(resT1, resT2, 2)}" class="calendar_tour_td">${team2}</td>
+    //                     </tr>
+    //                     <tr class="calendar_tour_tr">
+    //                         <td class="${winOrLose(resT3, resT4, 1)}" class="calendar_tour_td">${team3}</td>
+    //                         <td class="calendar_tour_td">${resT3}</td>
+    //                         <td class="calendar_tour_td">:</td>
+    //                         <td class="calendar_tour_td">${resT4}</td>
+    //                         <td class="${winOrLose(resT3, resT4, 2)}" class="calendar_tour_td">${team4}</td>
+    //                     </tr>
+    //                 </table>
+    //         </div>
+    // `);
+
+
+    function goalPlayer(club, quality, tour, idDom) { //team - arr
+
+        let idDomDiv = document.querySelector(`#${idDom}_${tour}`);
+        
+
+        for (let i = 0; i < +quality; i++) {
+            // let randomPlayer = mathRandom(0, );
+            let x = +club.players.length;
+            console.log('x : ', x );
+            let pl =  club.players[(mathRandom(0, (x - 1)))].name;
+            idDomDiv.insertAdjacentHTML('beforeend', `<p>${pl}</p>`);
+        }
+    }
+
+    clndArea.insertAdjacentHTML('beforeend', `   
+                    <div class="calendar_tour"> 
+                        <div class="calendar_tour_header">Тур №${currentTour}</div>
+                            <div class="calendar_tour_container">
+                                <div class="result__match">
+                                    <div class="calendar_tour_tr">
+                                        <div class="${winOrLose(resT1, resT2, 1)}" class="calendar_tour_td">${team1.name}</div>
+                                        <div class="calendar_tour_td">${resT1}</div>
+                                        <div class="calendar_tour_td">:</div>
+                                        <div class="calendar_tour_td">${resT2}</div>
+                                        <div class="${winOrLose(resT1, resT2, 2)}" class="calendar_tour_td">${team2.name}</div>
+                                    </div>
+                                    <details open="open">
+                                        <summary>Итоги матча:</summary>
+                                            <div class="res__match">
+                                                <div class="player__goal" id="resTeamGoal1_${currentTour}">
+                                                </div>
+
+                                                <div class="player__goal" id="resTeamGoal2_${currentTour}">
+                                                </div>
+                                            </div>
+                                    </details>
+                                </div>
+
+                                <div class="result__match">
+                                    <div class="calendar_tour_tr">
+                                        <div class="${winOrLose(resT3, resT4, 1)}" class="calendar_tour_td">${team3.name}</div>
+                                        <div class="calendar_tour_td">${resT3}</div>
+                                        <div class="calendar_tour_td">:</div>
+                                        <div class="calendar_tour_td">${resT4}</div>
+                                        <div class="${winOrLose(resT3, resT4, 2)}" class="calendar_tour_td">${team4.name}</div>
+                                    </div>
+                                    <details open="open">
+                                        <summary>Итоги матча:</summary>
+                                            <div class="res__match">
+                                                <div class="player__goal" id="resTeamGoal3_${currentTour}">
+                                                </div>
+
+                                                <div class="player__goal" id="resTeamGoal4_${currentTour}">
+                                                </div>
+                                            </div>
+                                    </details>
+                                </div>
+
+                            </div>
+                    </div>
+    `);
+
+    goalPlayer(team1, resT1, currentTour, 'resTeamGoal1');
+    goalPlayer(team2, resT2, currentTour, 'resTeamGoal2');
+    goalPlayer(team3, resT3, currentTour, 'resTeamGoal3');
+    goalPlayer(team4, resT4, currentTour, 'resTeamGoal4');
+
+}
+
+
+
+btnGameTour.addEventListener('click', playTour)
+
+// btnGameTour.addEventListener('click', function() {
+//     if(currentTour <= ((+(team.length) * 2) - 2)){
+//         clndArea.insertAdjacentHTML('beforeend', `   
+//         <div class="calendar_tour"> 
+//                 <div class="calendar_tour_header">Тур №${currentTour}</div>
+//                     <table class="calendar_tour_container">
+//                         <tr class="calendar_tour_tr">
+//                             <td class="calendar_tour_td">Team3</td>
+//                             <td class="calendar_tour_td">${mathRandom(0, 5)}</td>
+//                             <td class="calendar_tour_td">:</td>
+//                             <td class="calendar_tour_td">${mathRandom(0, 5)}</td>
+//                             <td class="calendar_tour_td">Team2</td>
+//                         </tr>
+//                         <tr class="calendar_tour_tr">
+//                             <td class="calendar_tour_td">Team1</td>
+//                             <td class="calendar_tour_td">${mathRandom(0, 5)}</td>
+//                             <td class="calendar_tour_td">:</td>
+//                             <td class="calendar_tour_td">${mathRandom(0, 5)}</td>
+//                             <td class="calendar_tour_td">Team4</td>
+//                         </tr>
+//                     </table>
+//             </div>
+//     `);
+//         currentTour++;
+//     }
+// })
 
 btnGeneration.addEventListener('click', function() {
     areaTest.textContent = '';
     randomPlayer(team, arrPlayers);
 });
 
+randomPlayer(team, arrPlayers);
+console.log('team: ', team);
+console.log('team[0]: ', team[0]);
 
 inputRenameTeam.forEach(element => {
     console.log('inputRenameTeam: ', inputRenameTeam);
@@ -227,13 +401,15 @@ btnRenameOk.addEventListener('click', function() {
 // function renameTeam(nameTeamCurrent, nameTeamUser) {
 
 // }
-function renameTeam() {
-    for(let i =0; i < +(nameTeam.length); i++) {
-        inputRenameTeam[i].value = nameTeam[i].textContent;
-    }
-}
 
-renameTeam()
+
+// function renameTeam() {
+//     for(let i =0; i < +(nameTeam.length); i++) {
+//         inputRenameTeam[i].value = nameTeam[i].textContent;
+//     }
+// }
+
+// renameTeam()
 
 
 console.log(arrTeam[0]);
